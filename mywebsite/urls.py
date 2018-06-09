@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('newspaper/', include('newspaper.urls')),
     path('store/', include('store.urls')),
-    url(r'^$', TemplateView.as_view(template_name='homepage.html'),
+    path('', TemplateView.as_view(template_name='homepage.html'),
         name='homepage'),
 ]
