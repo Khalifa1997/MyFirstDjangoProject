@@ -1,0 +1,40 @@
+{% extends "header.html" %}
+
+{% block title %}
+Product Details
+{% endblock %}
+
+
+{% block content %}
+{% if product %}
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Company</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price($)</th>
+      <th scope="col">Size(Servings)</th>
+      <th scope="col">Reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><img src="{{product.picture}}" width="120px"></th>
+      <td>{{product.name}}</td>
+      <td>{{product.company}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.size}}</td>
+      <td>{{product.reviews}}</td>
+    </tr>
+   
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-danger" role="alert">There is no products with the ID</div>
+</div>
+{% endif %}
+{% endblock %}
