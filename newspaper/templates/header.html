@@ -52,8 +52,18 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">{{ user.username }}</a></li>
-        <li><a href="{% url 'logout'%}">Logout</a></li>
+        <li>
+                 <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+        </li>
         <li><a href="http://127.0.0.1:8000/store/">Store</a></li>
         <li><a href="#">Forums</a></li>
         
@@ -71,7 +81,6 @@
 </div>
   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
+
   </body>
 </html>

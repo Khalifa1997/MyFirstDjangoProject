@@ -23,7 +23,7 @@ def new_article(request):
 
 def new_comment(request, pk):
     articles = get_object_or_404(article, pk=pk)
-    #return render(request, 'CreatePost.html', {'article': article})
+    #ret*urn render(request, 'CreatePost.html', {'article': article})
     if request.method == 'POST':
         form = NewCommentForm(request.POST)
         if form.is_valid():

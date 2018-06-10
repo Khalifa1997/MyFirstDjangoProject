@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('newspaper/', include('newspaper.urls')),
     path('store/', include('store.urls')),
+    path('forums/', include('forums.urls')),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/',accounts_views.signup, name='signup'),
     path('', TemplateView.as_view(template_name='homepage.html'),

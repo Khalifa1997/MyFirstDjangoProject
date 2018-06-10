@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'forums',
     'accounts',
     'widget_tweaks',
     'store',
