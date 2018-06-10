@@ -12,4 +12,4 @@ def signup(request):
             return redirect('homepage')
     else:
         form = SignUpForm()
-    return render(request, 'accounts/signup.html', {'x': form})
+    return render(request, 'accounts/signup.html', {'form': form})

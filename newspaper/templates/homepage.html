@@ -2,7 +2,12 @@
 {% block title %}Homepage{% endblock %}
 {% block content %}
 
-{% include "includes/homesnippet.html" %}
 
+
+{% include "includes/homesnippet.html" %}
+<br>
+{% if user.username == '' %}
+<div class="alert alert-warning" role="alert">Warning! You are not signed in yet. <a href="{% url 'signup'%}"> Sign up here</a></div>
+{% endif %}
 {% endblock %}
  
