@@ -1,0 +1,16 @@
+{% load widget_tweaks %}
+
+{% for field in x %}
+  <div class="form-group">
+    {{ field.label_tag }}
+
+    <!-- code suppressed for brevity -->
+    {% render_field field class="form-control" placeholder=""%}
+
+    {% if field.help_text %}
+      <small class="form-text text-muted">
+        {{ field.help_text|safe }}  <!-- new code here -->
+      </small>
+    {% endif %}
+  </div>
+{% endfor %}
