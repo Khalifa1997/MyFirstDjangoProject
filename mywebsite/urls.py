@@ -16,12 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+from accounts import views as accounts_views
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('newspaper/', include('newspaper.urls')),
     path('store/', include('store.urls')),
+    path('signup/',accounts_views.signup, name='signup'),
     path('', TemplateView.as_view(template_name='homepage.html'),
         name='homepage'),
 ]

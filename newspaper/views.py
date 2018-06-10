@@ -46,5 +46,6 @@ class ArticleDetailsView(generic.DetailView):
 
 
 def Delete(request, pk):
-    get_object_or_404(article, pk=pk).delete()
-    return render(request, 'newspaper/Delete.html')
+    x=get_object_or_404(article, pk=pk)
+    x.delete()
+    return render(request, 'newspaper/delete.html')
