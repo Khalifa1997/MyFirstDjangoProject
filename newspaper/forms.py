@@ -6,11 +6,11 @@ class NewArticleForm(forms.ModelForm):
 
     class Meta:
         model = article
-        fields = ['title', 'body', 'date', 'author']
+        fields = ['title', 'body']
 
 class NewCommentForm(forms.ModelForm):
     #comments = forms.CharField(widget=forms.Textarea())
 
     class Meta:
         model = comment
-        fields = ['text', 'date']
+        fields = ['text']

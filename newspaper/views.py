@@ -3,7 +3,7 @@ from .models import comment, article
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewArticleForm, NewCommentForm
 from django.contrib.auth.decorators import login_required
-
+import datetime
 class IndexView(generic.ListView):
     template_name = 'newspaper/newspaper.html'
     context_object_name = 'articles'
@@ -16,8 +16,10 @@ def new_article(request):
     if request.method == 'POST':
         form = NewArticleForm(request.POST)
         if form.is_valid():
-            form.save()
-            
+            topic = form.save(commit=False)
+            topic.author= request.user.username
+            topic.date=datetime.date.today()
+            topic.save()
             return redirect('index')
     else:
         form = NewArticleForm()
@@ -31,7 +33,8 @@ def new_comment(request, pk):
         if form.is_valid():
             topic = form.save(commit=False)
             topic.main_article = articles
-            
+            topic.created_by=request.user.username
+            topic.date=datetime.datetime.now()
             topic.save()
             
             return redirect('articledetails', pk=articles.pk)  # TODO: redirect to the crea
