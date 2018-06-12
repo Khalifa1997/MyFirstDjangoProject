@@ -4,14 +4,12 @@
 
 {% block content %}
 <div class="container col">
-{% if user.username != ''  %}
 <a href="{% url 'new_article'%}"><button type="button" class="btn btn-success">Add Article</button></a>
-{% endif %}
 {% for x in articles %}
 <h5>{{ x.date}}  </h5>
 <a href="{{x.pk}}"> {{ x.title}}</a>
 
-<h6><i>Written by: {{x.author}}</i></h6>
+<h6><i>Written by: </i></h6>
 <br>
 
 {% endfor %}

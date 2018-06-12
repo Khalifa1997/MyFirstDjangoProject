@@ -37,7 +37,7 @@ Article Details
 {% for y in article.comment_set.all %}
 <div class="well">
 <h5>{{ y.text}}  </h5>
-<h5><i>On: {{ y.date}}  </i></h5>
+<h5><i>On: {{ y.date}} by {{y.created_by}} </i></h5>
 </div>
 <br>
 {% endfor %}

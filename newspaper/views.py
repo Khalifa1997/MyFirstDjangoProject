@@ -2,25 +2,27 @@ from django.views import generic
 from .models import comment, article
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewArticleForm, NewCommentForm
+from django.contrib.auth.decorators import login_required
 
 class IndexView(generic.ListView):
     template_name = 'newspaper/newspaper.html'
     context_object_name = 'articles'
     def get_queryset(self):
         return article.objects.order_by('-date')
-
+@login_required
 def new_article(request):
     #article = get_object_or_404(article, pk=pk)
     #return render(request, 'CreatePost.html', {'article': article})
     if request.method == 'POST':
         form = NewArticleForm(request.POST)
         if form.is_valid():
-            topic = form.save()
+            form.save()
+            
             return redirect('index')
     else:
         form = NewArticleForm()
     return render(request, 'newspaper/CreatePost.html', {'form': form})
-
+@login_required
 def new_comment(request, pk):
     articles = get_object_or_404(article, pk=pk)
     #ret*urn render(request, 'CreatePost.html', {'article': article})
@@ -44,7 +46,7 @@ class ArticleDetailsView(generic.DetailView):
     def get_queryset(self):
         return article.objects.order_by('-date')
 
-
+@login_required
 def Delete(request, pk):
     x=get_object_or_404(article, pk=pk)
     x.delete()

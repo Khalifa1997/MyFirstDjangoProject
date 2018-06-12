@@ -14,6 +14,7 @@ class comment(models.Model):
     main_article=models.ForeignKey('article',on_delete=models.CASCADE)
     text=models.TextField(default='Empty reply')
     date = models.DateTimeField(default=datetime.now, blank=True)
+    created_by=  models.CharField(max_length=150, default='')
     def __str__(self):
         return self.text
     
