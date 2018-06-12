@@ -52,5 +52,8 @@ class ArticleDetailsView(generic.DetailView):
 @login_required
 def Delete(request, pk):
     x=get_object_or_404(article, pk=pk)
-    x.delete()
-    return render(request, 'newspaper/delete.html')
+    if x.author== request.user.username or request.user.is_superuser:
+        x.delete()
+        return render(request, 'newspaper/delete.html')
+    else:
+        return render(request, 'newspaper/denied.html')
