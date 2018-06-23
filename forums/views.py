@@ -15,16 +15,15 @@ class BoardDetailView(generic.DetailView):
     template_name = 'forums/threads.html'
     context_object_name = 'threads'
     def get_queryset(self):
-        return thread.objects.filter(board=pk).order_by('-date')
+        return thread.objects.filter(board=board_id).order_by('-date')
 
 class ThreadDetailView(generic.DetailView):
-    template_name = 'forums/boards.html'
+    template_name = 'forums/replies.html'
     context_object_name = 'replies'
     def get_queryset(self):
-        boardx = get_object_or_404(board,pk=pk)
-        threads = thread.objects.filter(board=boardx.pk)
-        #threadx= threads.objects.get(pk=pk2)
-        threadx= get_object_or_404(threads,pk=pk2)
+        threads = thread.objects.filter(board=board_id)
+        #threadx= threads.objects.get(pk=thread_id)
+        threadx= get_object_or_404(threads,pk=thread_id)
         return reply.objects.filter(thread=threadx.pk ).order_by('-date')
 
 @login_required
