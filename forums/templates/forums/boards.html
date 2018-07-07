@@ -1,0 +1,27 @@
+{% extends "header.html" %}
+
+{% block title %}Boards{% endblock %}
+
+{% block content %}
+<div class="container col">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'homepage'%}">Home</a></li>
+        <li class="active">Forums</li>
+      </ol>
+
+{%for board in boards %}
+
+    
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <a href="{{board.pk}}" style=" color:white; text-decoration: none;"><h3 class="panel-title">{{board.name}}</h3></a>
+    </div>
+    <div class="panel-body">
+        <p>{{board.description}}</p>
+
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -15,14 +15,13 @@ class BoardDetailView(generic.DetailView):
     template_name = 'forums/threads.html'
     context_object_name = 'threads'
     def get_queryset(self):
-        return thread.objects.filter(board=board_id).order_by('-date')
+        return board.objects.all().order_by('-date')
 
-class ThreadDetailView(generic.DetailView):
+class ThreadDetailView(generic.ListView):
     template_name = 'forums/replies.html'
     context_object_name = 'replies'
     def get_queryset(self):
         threads = thread.objects.filter(board=board_id)
-        #threadx= threads.objects.get(pk=thread_id)
         threadx= get_object_or_404(threads,pk=thread_id)
         return reply.objects.filter(thread=threadx.pk ).order_by('-date')
 
@@ -53,7 +52,7 @@ def newReply(request , pk):
             new_reply.thread=threadx
             new_reply.created_by=request.user.username
             new_reply.save()
-            return redirect('replies', pk=threadx.pk)  # TODO: redirect to the crea
+            return redirect('replies', pk=threadx.pk)  #TODO: redirect to the crea
     else:
         form = NewReplyForm()
     return render(request, 'forums/CreateReply.html', {'form': form})

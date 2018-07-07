@@ -1,0 +1,27 @@
+{% extends "header.html" %}
+
+{% block title %}Threads- {{threads.name}}{% endblock %}
+
+{% block content %}
+<div class="container col">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'homepage'%}">Home</a></li>
+        <li><a href="{% url 'boards' %}">Forums</a></li>
+        <li class="active">{{threads.name}}</li>
+      </ol>
+{% for thread in threads.thread_set.all %}
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <a href="{{thread.pk}}" style=" color:mediumblue; text-decoration: none;"><h3 class="panel-title">{{thread.title}}</h3></a>
+    </div>
+    <div class="panel-body">
+        <h6>{{thread.date}}</h6>
+        <br>
+        <h6>Created by: {{thread.author}}</h6>
+
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
